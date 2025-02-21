@@ -13,15 +13,17 @@ import {
 interface TestListProps {
   tests: Test[];
   onRunTest: (testId: string) => void;
-  onDuplicateTest?: (test: Test) => void;
   runningTests: Record<string, boolean>;
+  onDuplicateTest: (test: Test) => Promise<void>;
+  duplicateTestLoading: Record<string, boolean>;
 }
 
 export const TestList: React.FC<TestListProps> = ({ 
   tests, 
   onRunTest, 
   onDuplicateTest,
-  runningTests 
+  runningTests,
+  duplicateTestLoading 
 }) => {
   const [expandedTests, setExpandedTests] = useState<Record<string, boolean>>({});
 
@@ -58,6 +60,17 @@ export const TestList: React.FC<TestListProps> = ({
                   )}
                 </Button>
                 {/* TODO: Implement duplicate functionality */}
+                <Button
+                  variant="contained"
+                  onClick={async () => await onDuplicateTest(test)}
+                  disabled={duplicateTestLoading[test.id]}
+                >
+                  {duplicateTestLoading[test.id] ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    'Duplicate'
+                  )}
+                </Button>
               </Stack>
             </Stack>
             

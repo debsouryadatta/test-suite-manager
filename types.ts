@@ -4,6 +4,7 @@ export interface Test {
   description: string;
   suiteId: string;
   status: 'idle' | 'running' | 'completed' | 'failed';
+  created_at: string;
   lastRun?: {
     startedAt: string;
     completedAt?: string;

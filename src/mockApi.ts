@@ -11,6 +11,7 @@ const mockTests: Test[] = [
     description: 'Validates the user login flow',
     suiteId: '1',
     status: 'idle',
+    created_at: '2022-01-01T00:00:00.000Z',
   },
   {
     id: '2',
@@ -18,6 +19,7 @@ const mockTests: Test[] = [
     description: 'Tests payment processing workflow',
     suiteId: '1',
     status: 'idle',
+    created_at: '2022-01-01T00:00:00.000Z',
   },
 ];
 
